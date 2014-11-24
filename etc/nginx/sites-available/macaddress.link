@@ -1,0 +1,19 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name macaddress.link direct.macaddress.link update.macaddress.link update.direct.macaddress.link;
+
+    root /home/spencersr/Projects/macaddress.link/public;
+
+    access_log /var/log/nginx/macaddress-link-access.log;
+    error_log /var/log/nginx/macaddress-link-error.log;
+
+    try_files $uri @passenger;
+    
+    location @passenger {
+        passenger_enabled on;
+        passenger_python /home/spencersr/.virtualenvs/macaddress.link/bin/python;
+    }
+}
+
