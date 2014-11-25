@@ -1,2 +1,5 @@
 bottle
+iptools
+requests
+pymongo
 sphinx
